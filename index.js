@@ -14,6 +14,21 @@ const completebuy = document.getElementById('nextProcess');
 const bodyed = document.getElementById('car-body'); 
 let onclicked = 1; 
 
+// Complete buy button click 
+completebuy.addEventListener('click', function() {
+    const phoneNumber = inputed.value.trim();
+
+    if (tiketCount > 0 && !isNaN(phoneNumber) && phoneNumber.length > 0) { 
+        const successElement = document.getElementById('success');
+        successElement.classList.remove('hidden');
+        bodyed.classList.add('hidden');
+        console.log("Purchase completed with phone number: " + phoneNumber);
+        return;
+    }
+
+    alert("Please select at least one ticket and enter a valid phone number.");
+});
+
 keyborde.forEach(element => {
     element.addEventListener('click', function() {
         if (tiketCount >= 4) {
@@ -60,17 +75,3 @@ apply.addEventListener('click', function() {
     }
 });
 
-// Complete buy button click 
-completebuy.addEventListener('click', function() {
-    const phoneNumber = inputed.value.trim();
-
-    if (tiketCount > 0 && !isNaN(phoneNumber) && phoneNumber.length > 0) { 
-        const successElement = document.getElementById('success');
-        successElement.classList.remove('hidden');
-        bodyed.classList.add('hidden');
-        console.log("Purchase completed with phone number: " + phoneNumber);
-        return;
-    }
-
-    alert("Please select at least one ticket and enter a valid phone number.");
-});
